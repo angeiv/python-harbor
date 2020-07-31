@@ -1,0 +1,10 @@
+# LdapFailedImportUsers
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ldap_uid** | **str** | the uid can&#x27;t add to system. | [optional] 
+**error** | **str** | fail reason. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
