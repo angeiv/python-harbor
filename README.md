@@ -267,6 +267,25 @@ Class | Method | HTTP request | Description
 *ArtifactApi* | [**list_tags**](docs/ArtifactApi.md#list_tags) | **GET** /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}/tags | List tags
 *ArtifactApi* | [**remove_label**](docs/ArtifactApi.md#remove_label) | **DELETE** /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}/labels/{label_id} | Remove label from artifact
 *AuditlogApi* | [**list_audit_logs**](docs/AuditlogApi.md#list_audit_logs) | **GET** /audit-logs | Get recent logs of the projects which the user is a member of
+*PreheatApi* | [**create_instance**](docs/PreheatApi.md#create_instance) | **POST** /p2p/preheat/instances | Create p2p provider instances
+*PreheatApi* | [**create_policy**](docs/PreheatApi.md#create_policy) | **POST** /projects/{project_name}/preheat/policies | Create a preheat policy under a project
+*PreheatApi* | [**delete_instance**](docs/PreheatApi.md#delete_instance) | **DELETE** /p2p/preheat/instances/{preheat_instance_name} | Delete the specified P2P provider instance
+*PreheatApi* | [**delete_policy**](docs/PreheatApi.md#delete_policy) | **DELETE** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Delete a preheat policy
+*PreheatApi* | [**get_execution**](docs/PreheatApi.md#get_execution) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id} | Get a execution detail by id
+*PreheatApi* | [**get_instance**](docs/PreheatApi.md#get_instance) | **GET** /p2p/preheat/instances/{preheat_instance_name} | Get a P2P provider instance
+*PreheatApi* | [**get_log**](docs/PreheatApi.md#get_log) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs | Get the log text stream of the specified task for the given execution
+*PreheatApi* | [**get_policy**](docs/PreheatApi.md#get_policy) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Get a preheat policy
+*PreheatApi* | [**list_executions**](docs/PreheatApi.md#list_executions) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions | List executions for the given policy
+*PreheatApi* | [**list_instances**](docs/PreheatApi.md#list_instances) | **GET** /p2p/preheat/instances | List P2P provider instances
+*PreheatApi* | [**list_policies**](docs/PreheatApi.md#list_policies) | **GET** /projects/{project_name}/preheat/policies | List preheat policies
+*PreheatApi* | [**list_providers**](docs/PreheatApi.md#list_providers) | **GET** /p2p/preheat/providers | List P2P providers
+*PreheatApi* | [**list_providers_under_project**](docs/PreheatApi.md#list_providers_under_project) | **GET** /projects/{project_name}/preheat/providers | Get all providers at project level
+*PreheatApi* | [**list_tasks**](docs/PreheatApi.md#list_tasks) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks | List all the related tasks for the given execution
+*PreheatApi* | [**manual_preheat**](docs/PreheatApi.md#manual_preheat) | **POST** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Manual preheat
+*PreheatApi* | [**ping_instances**](docs/PreheatApi.md#ping_instances) | **POST** /p2p/preheat/instances/ping | Ping status of a instance.
+*PreheatApi* | [**stop_execution**](docs/PreheatApi.md#stop_execution) | **PATCH** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id} | Stop a execution
+*PreheatApi* | [**update_instance**](docs/PreheatApi.md#update_instance) | **PUT** /p2p/preheat/instances/{preheat_instance_name} | Update the specified P2P provider instance
+*PreheatApi* | [**update_policy**](docs/PreheatApi.md#update_policy) | **PUT** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Update preheat policy
 *ProjectApi* | [**get_logs**](docs/ProjectApi.md#get_logs) | **GET** /projects/{project_name}/logs | Get recent logs of the projects
 *RepositoryApi* | [**delete_repository**](docs/RepositoryApi.md#delete_repository) | **DELETE** /projects/{project_name}/repositories/{repository_name} | Delete repository
 *RepositoryApi* | [**get_repository**](docs/RepositoryApi.md#get_repository) | **GET** /projects/{project_name}/repositories/{repository_name} | Get repository
@@ -284,14 +303,24 @@ Class | Method | HTTP request | Description
  - [AuditLog](docs/AuditLog.md)
  - [Error](docs/Error.md)
  - [Errors](docs/Errors.md)
+ - [Execution](docs/Execution.md)
  - [ExtraAttrs](docs/ExtraAttrs.md)
+ - [Instance](docs/Instance.md)
+ - [InstanceCreatedResp](docs/InstanceCreatedResp.md)
+ - [InstanceDeletedResp](docs/InstanceDeletedResp.md)
+ - [InstanceUpdateResp](docs/InstanceUpdateResp.md)
  - [Label](docs/Label.md)
+ - [Metadata](docs/Metadata.md)
+ - [Metrics](docs/Metrics.md)
  - [NativeReportSummary](docs/NativeReportSummary.md)
  - [Platform](docs/Platform.md)
+ - [PreheatPolicy](docs/PreheatPolicy.md)
+ - [ProviderUnderProject](docs/ProviderUnderProject.md)
  - [Reference](docs/Reference.md)
  - [Repository](docs/Repository.md)
  - [ScanOverview](docs/ScanOverview.md)
  - [Tag](docs/Tag.md)
+ - [Task](docs/Task.md)
  - [VulnerabilitySummary](docs/VulnerabilitySummary.md)
 
 ## Documentation For Authorization

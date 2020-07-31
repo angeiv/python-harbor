@@ -34,7 +34,7 @@ class AuditLog(object):
         'resource': 'str',
         'resource_type': 'str',
         'operation': 'str',
-        'op_time': 'str'
+        'op_time': 'datetime'
     }
 
     attribute_map = {
@@ -190,7 +190,7 @@ class AuditLog(object):
         The time when this operation is triggered.  # noqa: E501
 
         :return: The op_time of this AuditLog.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._op_time
 
@@ -201,7 +201,7 @@ class AuditLog(object):
         The time when this operation is triggered.  # noqa: E501
 
         :param op_time: The op_time of this AuditLog.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._op_time = op_time
