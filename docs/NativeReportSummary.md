@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **start_time** | **datetime** | The start time of the scan process that generating report | [optional] 
 **end_time** | **datetime** | The end time of the scan process that generating report | [optional] 
 **complete_percent** | **int** | The complete percent of the scanning which value is between 0 and 100 | [optional] 
+**scanner** | [**Scanner**](Scanner.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

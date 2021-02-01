@@ -44,7 +44,7 @@ class PreheatApi(object):
         :param async_req bool
         :param Instance body: The JSON object of instance. (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceCreatedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -67,7 +67,7 @@ class PreheatApi(object):
         :param async_req bool
         :param Instance body: The JSON object of instance. (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceCreatedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -127,7 +127,7 @@ class PreheatApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InstanceCreatedResp',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -258,7 +258,7 @@ class PreheatApi(object):
         :param async_req bool
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceDeletedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -281,7 +281,7 @@ class PreheatApi(object):
         :param async_req bool
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceDeletedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -337,7 +337,7 @@ class PreheatApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InstanceDeletedResp',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -666,129 +666,6 @@ class PreheatApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_log(self, project_name, preheat_policy_name, execution_id, task_id, **kwargs):  # noqa: E501
-        """Get the log text stream of the specified task for the given execution  # noqa: E501
-
-        Get the log text stream of the specified task for the given execution  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_log(project_name, preheat_policy_name, execution_id, task_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str project_name: The name of the project (required)
-        :param str preheat_policy_name: Preheat Policy Name (required)
-        :param int execution_id: Execution ID (required)
-        :param int task_id: Task ID (required)
-        :param str x_request_id: An unique ID for the request
-        :return: str
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.get_log_with_http_info(project_name, preheat_policy_name, execution_id, task_id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_log_with_http_info(project_name, preheat_policy_name, execution_id, task_id, **kwargs)  # noqa: E501
-            return data
-
-    def get_log_with_http_info(self, project_name, preheat_policy_name, execution_id, task_id, **kwargs):  # noqa: E501
-        """Get the log text stream of the specified task for the given execution  # noqa: E501
-
-        Get the log text stream of the specified task for the given execution  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_log_with_http_info(project_name, preheat_policy_name, execution_id, task_id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str project_name: The name of the project (required)
-        :param str preheat_policy_name: Preheat Policy Name (required)
-        :param int execution_id: Execution ID (required)
-        :param int task_id: Task ID (required)
-        :param str x_request_id: An unique ID for the request
-        :return: str
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['project_name', 'preheat_policy_name', 'execution_id', 'task_id', 'x_request_id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_log" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'project_name' is set
-        if ('project_name' not in params or
-                params['project_name'] is None):
-            raise ValueError("Missing the required parameter `project_name` when calling `get_log`")  # noqa: E501
-        # verify the required parameter 'preheat_policy_name' is set
-        if ('preheat_policy_name' not in params or
-                params['preheat_policy_name'] is None):
-            raise ValueError("Missing the required parameter `preheat_policy_name` when calling `get_log`")  # noqa: E501
-        # verify the required parameter 'execution_id' is set
-        if ('execution_id' not in params or
-                params['execution_id'] is None):
-            raise ValueError("Missing the required parameter `execution_id` when calling `get_log`")  # noqa: E501
-        # verify the required parameter 'task_id' is set
-        if ('task_id' not in params or
-                params['task_id'] is None):
-            raise ValueError("Missing the required parameter `task_id` when calling `get_log`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'project_name' in params:
-            path_params['project_name'] = params['project_name']  # noqa: E501
-        if 'preheat_policy_name' in params:
-            path_params['preheat_policy_name'] = params['preheat_policy_name']  # noqa: E501
-        if 'execution_id' in params:
-            path_params['execution_id'] = params['execution_id']  # noqa: E501
-        if 'task_id' in params:
-            path_params['task_id'] = params['task_id']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-        if 'x_request_id' in params:
-            header_params['X-Request-Id'] = params['x_request_id']  # noqa: E501
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basic']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def get_policy(self, project_name, preheat_policy_name, **kwargs):  # noqa: E501
         """Get a preheat policy  # noqa: E501
 
@@ -889,6 +766,129 @@ class PreheatApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='PreheatPolicy',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_preheat_log(self, project_name, preheat_policy_name, execution_id, task_id, **kwargs):  # noqa: E501
+        """Get the log text stream of the specified task for the given execution  # noqa: E501
+
+        Get the log text stream of the specified task for the given execution  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_preheat_log(project_name, preheat_policy_name, execution_id, task_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str project_name: The name of the project (required)
+        :param str preheat_policy_name: Preheat Policy Name (required)
+        :param int execution_id: Execution ID (required)
+        :param int task_id: Task ID (required)
+        :param str x_request_id: An unique ID for the request
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_preheat_log_with_http_info(project_name, preheat_policy_name, execution_id, task_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_preheat_log_with_http_info(project_name, preheat_policy_name, execution_id, task_id, **kwargs)  # noqa: E501
+            return data
+
+    def get_preheat_log_with_http_info(self, project_name, preheat_policy_name, execution_id, task_id, **kwargs):  # noqa: E501
+        """Get the log text stream of the specified task for the given execution  # noqa: E501
+
+        Get the log text stream of the specified task for the given execution  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_preheat_log_with_http_info(project_name, preheat_policy_name, execution_id, task_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str project_name: The name of the project (required)
+        :param str preheat_policy_name: Preheat Policy Name (required)
+        :param int execution_id: Execution ID (required)
+        :param int task_id: Task ID (required)
+        :param str x_request_id: An unique ID for the request
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['project_name', 'preheat_policy_name', 'execution_id', 'task_id', 'x_request_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_preheat_log" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if ('project_name' not in params or
+                params['project_name'] is None):
+            raise ValueError("Missing the required parameter `project_name` when calling `get_preheat_log`")  # noqa: E501
+        # verify the required parameter 'preheat_policy_name' is set
+        if ('preheat_policy_name' not in params or
+                params['preheat_policy_name'] is None):
+            raise ValueError("Missing the required parameter `preheat_policy_name` when calling `get_preheat_log`")  # noqa: E501
+        # verify the required parameter 'execution_id' is set
+        if ('execution_id' not in params or
+                params['execution_id'] is None):
+            raise ValueError("Missing the required parameter `execution_id` when calling `get_preheat_log`")  # noqa: E501
+        # verify the required parameter 'task_id' is set
+        if ('task_id' not in params or
+                params['task_id'] is None):
+            raise ValueError("Missing the required parameter `task_id` when calling `get_preheat_log`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in params:
+            path_params['project_name'] = params['project_name']  # noqa: E501
+        if 'preheat_policy_name' in params:
+            path_params['preheat_policy_name'] = params['preheat_policy_name']  # noqa: E501
+        if 'execution_id' in params:
+            path_params['execution_id'] = params['execution_id']  # noqa: E501
+        if 'task_id' in params:
+            path_params['task_id'] = params['task_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'x_request_id' in params:
+            header_params['X-Request-Id'] = params['x_request_id']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basic']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1433,6 +1433,9 @@ class PreheatApi(object):
         :param str preheat_policy_name: Preheat Policy Name (required)
         :param int execution_id: Execution ID (required)
         :param str x_request_id: An unique ID for the request
+        :param int page: The page number
+        :param int page_size: The size of per page
+        :param str q: Query string to query resources. Supported query patterns are \"exact match(k=v)\", \"fuzzy match(k=~v)\", \"range(k=[min~max])\", \"list with union releationship(k={v1 v2 v3})\" and \"list with intersetion relationship(k=(v1 v2 v3))\". The value of range and list can be string(enclosed by \" or '), integer or time(in format \"2020-04-09 02:36:00\"). All of these query patterns should be put in the query string \"q=xxx\" and splitted by \",\". e.g. q=k1=v1,k2=~v2,k3=[min~max]
         :return: list[Task]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1458,12 +1461,15 @@ class PreheatApi(object):
         :param str preheat_policy_name: Preheat Policy Name (required)
         :param int execution_id: Execution ID (required)
         :param str x_request_id: An unique ID for the request
+        :param int page: The page number
+        :param int page_size: The size of per page
+        :param str q: Query string to query resources. Supported query patterns are \"exact match(k=v)\", \"fuzzy match(k=~v)\", \"range(k=[min~max])\", \"list with union releationship(k={v1 v2 v3})\" and \"list with intersetion relationship(k=(v1 v2 v3))\". The value of range and list can be string(enclosed by \" or '), integer or time(in format \"2020-04-09 02:36:00\"). All of these query patterns should be put in the query string \"q=xxx\" and splitted by \",\". e.g. q=k1=v1,k2=~v2,k3=[min~max]
         :return: list[Task]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['project_name', 'preheat_policy_name', 'execution_id', 'x_request_id']  # noqa: E501
+        all_params = ['project_name', 'preheat_policy_name', 'execution_id', 'x_request_id', 'page', 'page_size', 'q']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1502,6 +1508,12 @@ class PreheatApi(object):
             path_params['execution_id'] = params['execution_id']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'page_size' in params:
+            query_params.append(('page_size', params['page_size']))  # noqa: E501
+        if 'q' in params:
+            query_params.append(('q', params['q']))  # noqa: E501
 
         header_params = {}
         if 'x_request_id' in params:
@@ -1896,7 +1908,7 @@ class PreheatApi(object):
         :param Instance body: The instance to update (required)
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceUpdateResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1920,7 +1932,7 @@ class PreheatApi(object):
         :param Instance body: The instance to update (required)
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceUpdateResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1986,7 +1998,7 @@ class PreheatApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InstanceUpdateResp',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

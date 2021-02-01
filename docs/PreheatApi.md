@@ -10,8 +10,8 @@ Method | HTTP request | Description
 [**delete_policy**](PreheatApi.md#delete_policy) | **DELETE** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Delete a preheat policy
 [**get_execution**](PreheatApi.md#get_execution) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id} | Get a execution detail by id
 [**get_instance**](PreheatApi.md#get_instance) | **GET** /p2p/preheat/instances/{preheat_instance_name} | Get a P2P provider instance
-[**get_log**](PreheatApi.md#get_log) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs | Get the log text stream of the specified task for the given execution
 [**get_policy**](PreheatApi.md#get_policy) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Get a preheat policy
+[**get_preheat_log**](PreheatApi.md#get_preheat_log) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs | Get the log text stream of the specified task for the given execution
 [**list_executions**](PreheatApi.md#list_executions) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions | List executions for the given policy
 [**list_instances**](PreheatApi.md#list_instances) | **GET** /p2p/preheat/instances | List P2P provider instances
 [**list_policies**](PreheatApi.md#list_policies) | **GET** /projects/{project_name}/preheat/policies | List preheat policies
@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**update_policy**](PreheatApi.md#update_policy) | **PUT** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Update preheat policy
 
 # **create_instance**
-> InstanceCreatedResp create_instance(body, x_request_id=x_request_id)
+> create_instance(body, x_request_id=x_request_id)
 
 Create p2p provider instances
 
@@ -50,8 +50,7 @@ x_request_id = 'x_request_id_example' # str | An unique ID for the request (opti
 
 try:
     # Create p2p provider instances
-    api_response = api_instance.create_instance(body, x_request_id=x_request_id)
-    pprint(api_response)
+    api_instance.create_instance(body, x_request_id=x_request_id)
 except ApiException as e:
     print("Exception when calling PreheatApi->create_instance: %s\n" % e)
 ```
@@ -65,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstanceCreatedResp**](InstanceCreatedResp.md)
+void (empty response body)
 
 ### Authorization
 
@@ -134,7 +133,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_instance**
-> InstanceDeletedResp delete_instance(preheat_instance_name, x_request_id=x_request_id)
+> delete_instance(preheat_instance_name, x_request_id=x_request_id)
 
 Delete the specified P2P provider instance
 
@@ -159,8 +158,7 @@ x_request_id = 'x_request_id_example' # str | An unique ID for the request (opti
 
 try:
     # Delete the specified P2P provider instance
-    api_response = api_instance.delete_instance(preheat_instance_name, x_request_id=x_request_id)
-    pprint(api_response)
+    api_instance.delete_instance(preheat_instance_name, x_request_id=x_request_id)
 except ApiException as e:
     print("Exception when calling PreheatApi->delete_instance: %s\n" % e)
 ```
@@ -174,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstanceDeletedResp**](InstanceDeletedResp.md)
+void (empty response body)
 
 ### Authorization
 
@@ -354,66 +352,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_log**
-> str get_log(project_name, preheat_policy_name, execution_id, task_id, x_request_id=x_request_id)
-
-Get the log text stream of the specified task for the given execution
-
-Get the log text stream of the specified task for the given execution
-
-### Example
-```python
-from __future__ import print_function
-import time
-import harbor
-from harbor.rest import ApiException
-from pprint import pprint
-# Configure HTTP basic authorization: basic
-configuration = harbor.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-
-# create an instance of the API class
-api_instance = harbor.PreheatApi(harbor.ApiClient(configuration))
-project_name = 'project_name_example' # str | The name of the project
-preheat_policy_name = 'preheat_policy_name_example' # str | Preheat Policy Name
-execution_id = 56 # int | Execution ID
-task_id = 56 # int | Task ID
-x_request_id = 'x_request_id_example' # str | An unique ID for the request (optional)
-
-try:
-    # Get the log text stream of the specified task for the given execution
-    api_response = api_instance.get_log(project_name, preheat_policy_name, execution_id, task_id, x_request_id=x_request_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PreheatApi->get_log: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**| The name of the project | 
- **preheat_policy_name** | **str**| Preheat Policy Name | 
- **execution_id** | **int**| Execution ID | 
- **task_id** | **int**| Task ID | 
- **x_request_id** | **str**| An unique ID for the request | [optional] 
-
-### Return type
-
-**str**
-
-### Authorization
-
-[basic](../README.md#basic)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_policy**
 > PreheatPolicy get_policy(project_name, preheat_policy_name, x_request_id=x_request_id)
 
@@ -467,6 +405,66 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_preheat_log**
+> str get_preheat_log(project_name, preheat_policy_name, execution_id, task_id, x_request_id=x_request_id)
+
+Get the log text stream of the specified task for the given execution
+
+Get the log text stream of the specified task for the given execution
+
+### Example
+```python
+from __future__ import print_function
+import time
+import harbor
+from harbor.rest import ApiException
+from pprint import pprint
+# Configure HTTP basic authorization: basic
+configuration = harbor.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+
+# create an instance of the API class
+api_instance = harbor.PreheatApi(harbor.ApiClient(configuration))
+project_name = 'project_name_example' # str | The name of the project
+preheat_policy_name = 'preheat_policy_name_example' # str | Preheat Policy Name
+execution_id = 56 # int | Execution ID
+task_id = 56 # int | Task ID
+x_request_id = 'x_request_id_example' # str | An unique ID for the request (optional)
+
+try:
+    # Get the log text stream of the specified task for the given execution
+    api_response = api_instance.get_preheat_log(project_name, preheat_policy_name, execution_id, task_id, x_request_id=x_request_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PreheatApi->get_preheat_log: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**| The name of the project | 
+ **preheat_policy_name** | **str**| Preheat Policy Name | 
+ **execution_id** | **int**| Execution ID | 
+ **task_id** | **int**| Task ID | 
+ **x_request_id** | **str**| An unique ID for the request | [optional] 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[basic](../README.md#basic)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -757,7 +755,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tasks**
-> list[Task] list_tasks(project_name, preheat_policy_name, execution_id, x_request_id=x_request_id)
+> list[Task] list_tasks(project_name, preheat_policy_name, execution_id, x_request_id=x_request_id, page=page, page_size=page_size, q=q)
 
 List all the related tasks for the given execution
 
@@ -781,10 +779,13 @@ project_name = 'project_name_example' # str | The name of the project
 preheat_policy_name = 'preheat_policy_name_example' # str | Preheat Policy Name
 execution_id = 56 # int | Execution ID
 x_request_id = 'x_request_id_example' # str | An unique ID for the request (optional)
+page = 1 # int | The page number (optional) (default to 1)
+page_size = 10 # int | The size of per page (optional) (default to 10)
+q = 'q_example' # str | Query string to query resources. Supported query patterns are \"exact match(k=v)\", \"fuzzy match(k=~v)\", \"range(k=[min~max])\", \"list with union releationship(k={v1 v2 v3})\" and \"list with intersetion relationship(k=(v1 v2 v3))\". The value of range and list can be string(enclosed by \" or '), integer or time(in format \"2020-04-09 02:36:00\"). All of these query patterns should be put in the query string \"q=xxx\" and splitted by \",\". e.g. q=k1=v1,k2=~v2,k3=[min~max] (optional)
 
 try:
     # List all the related tasks for the given execution
-    api_response = api_instance.list_tasks(project_name, preheat_policy_name, execution_id, x_request_id=x_request_id)
+    api_response = api_instance.list_tasks(project_name, preheat_policy_name, execution_id, x_request_id=x_request_id, page=page, page_size=page_size, q=q)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PreheatApi->list_tasks: %s\n" % e)
@@ -798,6 +799,9 @@ Name | Type | Description  | Notes
  **preheat_policy_name** | **str**| Preheat Policy Name | 
  **execution_id** | **int**| Execution ID | 
  **x_request_id** | **str**| An unique ID for the request | [optional] 
+ **page** | **int**| The page number | [optional] [default to 1]
+ **page_size** | **int**| The size of per page | [optional] [default to 10]
+ **q** | **str**| Query string to query resources. Supported query patterns are \&quot;exact match(k&#x3D;v)\&quot;, \&quot;fuzzy match(k&#x3D;~v)\&quot;, \&quot;range(k&#x3D;[min~max])\&quot;, \&quot;list with union releationship(k&#x3D;{v1 v2 v3})\&quot; and \&quot;list with intersetion relationship(k&#x3D;(v1 v2 v3))\&quot;. The value of range and list can be string(enclosed by \&quot; or &#x27;), integer or time(in format \&quot;2020-04-09 02:36:00\&quot;). All of these query patterns should be put in the query string \&quot;q&#x3D;xxx\&quot; and splitted by \&quot;,\&quot;. e.g. q&#x3D;k1&#x3D;v1,k2&#x3D;~v2,k3&#x3D;[min~max] | [optional] 
 
 ### Return type
 
@@ -984,7 +988,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_instance**
-> InstanceUpdateResp update_instance(body, preheat_instance_name, x_request_id=x_request_id)
+> update_instance(body, preheat_instance_name, x_request_id=x_request_id)
 
 Update the specified P2P provider instance
 
@@ -1010,8 +1014,7 @@ x_request_id = 'x_request_id_example' # str | An unique ID for the request (opti
 
 try:
     # Update the specified P2P provider instance
-    api_response = api_instance.update_instance(body, preheat_instance_name, x_request_id=x_request_id)
-    pprint(api_response)
+    api_instance.update_instance(body, preheat_instance_name, x_request_id=x_request_id)
 except ApiException as e:
     print("Exception when calling PreheatApi->update_instance: %s\n" % e)
 ```
@@ -1026,7 +1029,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstanceUpdateResp**](InstanceUpdateResp.md)
+void (empty response body)
 
 ### Authorization
 

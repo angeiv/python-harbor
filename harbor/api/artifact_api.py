@@ -778,6 +778,7 @@ class ArtifactApi(object):
         :param str x_request_id: An unique ID for the request
         :param int page: The page number
         :param int page_size: The size of per page
+        :param str x_accept_vulnerabilities: A comma-separated lists of MIME types for the scan report or scan summary. The first mime type will be used when the report found for it. Currently the mime type supports 'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0' and 'application/vnd.security.vulnerability.report; version=1.1'
         :param bool with_tag: Specify whether the tags are inclued inside the returning artifacts
         :param bool with_label: Specify whether the labels are inclued inside the returning artifacts
         :param bool with_scan_overview: Specify whether the scan overview is inclued inside the returning artifacts
@@ -810,6 +811,7 @@ class ArtifactApi(object):
         :param str x_request_id: An unique ID for the request
         :param int page: The page number
         :param int page_size: The size of per page
+        :param str x_accept_vulnerabilities: A comma-separated lists of MIME types for the scan report or scan summary. The first mime type will be used when the report found for it. Currently the mime type supports 'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0' and 'application/vnd.security.vulnerability.report; version=1.1'
         :param bool with_tag: Specify whether the tags are inclued inside the returning artifacts
         :param bool with_label: Specify whether the labels are inclued inside the returning artifacts
         :param bool with_scan_overview: Specify whether the scan overview is inclued inside the returning artifacts
@@ -820,7 +822,7 @@ class ArtifactApi(object):
                  returns the request thread.
         """
 
-        all_params = ['project_name', 'repository_name', 'reference', 'x_request_id', 'page', 'page_size', 'with_tag', 'with_label', 'with_scan_overview', 'with_signature', 'with_immutable_status']  # noqa: E501
+        all_params = ['project_name', 'repository_name', 'reference', 'x_request_id', 'page', 'page_size', 'x_accept_vulnerabilities', 'with_tag', 'with_label', 'with_scan_overview', 'with_signature', 'with_immutable_status']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -877,6 +879,8 @@ class ArtifactApi(object):
         header_params = {}
         if 'x_request_id' in params:
             header_params['X-Request-Id'] = params['x_request_id']  # noqa: E501
+        if 'x_accept_vulnerabilities' in params:
+            header_params['X-Accept-Vulnerabilities'] = params['x_accept_vulnerabilities']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -905,6 +909,125 @@ class ArtifactApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_vulnerabilities_addition(self, project_name, repository_name, reference, **kwargs):  # noqa: E501
+        """Get the vulnerabilities addition of the specific artifact  # noqa: E501
+
+        Get the vulnerabilities addition of the artifact specified by the reference under the project and repository.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_vulnerabilities_addition(project_name, repository_name, reference, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str project_name: The name of the project (required)
+        :param str repository_name: The name of the repository. If it contains slash, encode it with URL encoding. e.g. a/b -> a%252Fb (required)
+        :param str reference: The reference of the artifact, can be digest or tag (required)
+        :param str x_request_id: An unique ID for the request
+        :param str x_accept_vulnerabilities: A comma-separated lists of MIME types for the scan report or scan summary. The first mime type will be used when the report found for it. Currently the mime type supports 'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0' and 'application/vnd.security.vulnerability.report; version=1.1'
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_vulnerabilities_addition_with_http_info(project_name, repository_name, reference, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_vulnerabilities_addition_with_http_info(project_name, repository_name, reference, **kwargs)  # noqa: E501
+            return data
+
+    def get_vulnerabilities_addition_with_http_info(self, project_name, repository_name, reference, **kwargs):  # noqa: E501
+        """Get the vulnerabilities addition of the specific artifact  # noqa: E501
+
+        Get the vulnerabilities addition of the artifact specified by the reference under the project and repository.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_vulnerabilities_addition_with_http_info(project_name, repository_name, reference, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str project_name: The name of the project (required)
+        :param str repository_name: The name of the repository. If it contains slash, encode it with URL encoding. e.g. a/b -> a%252Fb (required)
+        :param str reference: The reference of the artifact, can be digest or tag (required)
+        :param str x_request_id: An unique ID for the request
+        :param str x_accept_vulnerabilities: A comma-separated lists of MIME types for the scan report or scan summary. The first mime type will be used when the report found for it. Currently the mime type supports 'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0' and 'application/vnd.security.vulnerability.report; version=1.1'
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['project_name', 'repository_name', 'reference', 'x_request_id', 'x_accept_vulnerabilities']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_vulnerabilities_addition" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if ('project_name' not in params or
+                params['project_name'] is None):
+            raise ValueError("Missing the required parameter `project_name` when calling `get_vulnerabilities_addition`")  # noqa: E501
+        # verify the required parameter 'repository_name' is set
+        if ('repository_name' not in params or
+                params['repository_name'] is None):
+            raise ValueError("Missing the required parameter `repository_name` when calling `get_vulnerabilities_addition`")  # noqa: E501
+        # verify the required parameter 'reference' is set
+        if ('reference' not in params or
+                params['reference'] is None):
+            raise ValueError("Missing the required parameter `reference` when calling `get_vulnerabilities_addition`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in params:
+            path_params['project_name'] = params['project_name']  # noqa: E501
+        if 'repository_name' in params:
+            path_params['repository_name'] = params['repository_name']  # noqa: E501
+        if 'reference' in params:
+            path_params['reference'] = params['reference']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'x_request_id' in params:
+            header_params['X-Request-Id'] = params['x_request_id']  # noqa: E501
+        if 'x_accept_vulnerabilities' in params:
+            header_params['X-Accept-Vulnerabilities'] = params['x_accept_vulnerabilities']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basic']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/repositories/{repository_name}/artifacts/{reference}/additions/vulnerabilities', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def list_artifacts(self, project_name, repository_name, **kwargs):  # noqa: E501
         """List artifacts  # noqa: E501
 
@@ -921,6 +1044,7 @@ class ArtifactApi(object):
         :param str q: Query string to query resources. Supported query patterns are \"exact match(k=v)\", \"fuzzy match(k=~v)\", \"range(k=[min~max])\", \"list with union releationship(k={v1 v2 v3})\" and \"list with intersetion relationship(k=(v1 v2 v3))\". The value of range and list can be string(enclosed by \" or '), integer or time(in format \"2020-04-09 02:36:00\"). All of these query patterns should be put in the query string \"q=xxx\" and splitted by \",\". e.g. q=k1=v1,k2=~v2,k3=[min~max]
         :param int page: The page number
         :param int page_size: The size of per page
+        :param str x_accept_vulnerabilities: A comma-separated lists of MIME types for the scan report or scan summary. The first mime type will be used when the report found for it. Currently the mime type supports 'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0' and 'application/vnd.security.vulnerability.report; version=1.1'
         :param bool with_tag: Specify whether the tags are included inside the returning artifacts
         :param bool with_label: Specify whether the labels are included inside the returning artifacts
         :param bool with_scan_overview: Specify whether the scan overview is included inside the returning artifacts
@@ -953,6 +1077,7 @@ class ArtifactApi(object):
         :param str q: Query string to query resources. Supported query patterns are \"exact match(k=v)\", \"fuzzy match(k=~v)\", \"range(k=[min~max])\", \"list with union releationship(k={v1 v2 v3})\" and \"list with intersetion relationship(k=(v1 v2 v3))\". The value of range and list can be string(enclosed by \" or '), integer or time(in format \"2020-04-09 02:36:00\"). All of these query patterns should be put in the query string \"q=xxx\" and splitted by \",\". e.g. q=k1=v1,k2=~v2,k3=[min~max]
         :param int page: The page number
         :param int page_size: The size of per page
+        :param str x_accept_vulnerabilities: A comma-separated lists of MIME types for the scan report or scan summary. The first mime type will be used when the report found for it. Currently the mime type supports 'application/vnd.scanner.adapter.vuln.report.harbor+json; version=1.0' and 'application/vnd.security.vulnerability.report; version=1.1'
         :param bool with_tag: Specify whether the tags are included inside the returning artifacts
         :param bool with_label: Specify whether the labels are included inside the returning artifacts
         :param bool with_scan_overview: Specify whether the scan overview is included inside the returning artifacts
@@ -963,7 +1088,7 @@ class ArtifactApi(object):
                  returns the request thread.
         """
 
-        all_params = ['project_name', 'repository_name', 'x_request_id', 'q', 'page', 'page_size', 'with_tag', 'with_label', 'with_scan_overview', 'with_signature', 'with_immutable_status']  # noqa: E501
+        all_params = ['project_name', 'repository_name', 'x_request_id', 'q', 'page', 'page_size', 'x_accept_vulnerabilities', 'with_tag', 'with_label', 'with_scan_overview', 'with_signature', 'with_immutable_status']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1016,6 +1141,8 @@ class ArtifactApi(object):
         header_params = {}
         if 'x_request_id' in params:
             header_params['X-Request-Id'] = params['x_request_id']  # noqa: E501
+        if 'x_accept_vulnerabilities' in params:
+            header_params['X-Accept-Vulnerabilities'] = params['x_accept_vulnerabilities']  # noqa: E501
 
         form_params = []
         local_var_files = {}
