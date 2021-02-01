@@ -17,6 +17,7 @@ from __future__ import absolute_import
 # import apis into sdk package
 from harbor.api.artifact_api import ArtifactApi
 from harbor.api.auditlog_api import AuditlogApi
+from harbor.api.icon_api import IconApi
 from harbor.api.preheat_api import PreheatApi
 from harbor.api.project_api import ProjectApi
 from harbor.api.repository_api import RepositoryApi
@@ -30,10 +31,13 @@ from harbor.models.addition_links import AdditionLinks
 from harbor.models.annotations import Annotations
 from harbor.models.artifact import Artifact
 from harbor.models.audit_log import AuditLog
+from harbor.models.cve_allowlist import CVEAllowlist
+from harbor.models.cve_allowlist_item import CVEAllowlistItem
 from harbor.models.error import Error
 from harbor.models.errors import Errors
 from harbor.models.execution import Execution
 from harbor.models.extra_attrs import ExtraAttrs
+from harbor.models.icon import Icon
 from harbor.models.instance import Instance
 from harbor.models.instance_created_resp import InstanceCreatedResp
 from harbor.models.instance_deleted_resp import InstanceDeletedResp
@@ -44,9 +48,18 @@ from harbor.models.metrics import Metrics
 from harbor.models.native_report_summary import NativeReportSummary
 from harbor.models.platform import Platform
 from harbor.models.preheat_policy import PreheatPolicy
+from harbor.models.project import Project
+from harbor.models.project_deletable import ProjectDeletable
+from harbor.models.project_metadata import ProjectMetadata
+from harbor.models.project_req import ProjectReq
+from harbor.models.project_summary import ProjectSummary
+from harbor.models.project_summary_quota import ProjectSummaryQuota
 from harbor.models.provider_under_project import ProviderUnderProject
 from harbor.models.reference import Reference
+from harbor.models.registry import Registry
+from harbor.models.registry_credential import RegistryCredential
 from harbor.models.repository import Repository
+from harbor.models.resource_list import ResourceList
 from harbor.models.scan_overview import ScanOverview
 from harbor.models.tag import Tag
 from harbor.models.task import Task

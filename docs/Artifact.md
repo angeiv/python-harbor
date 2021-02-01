@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **repository_id** | **int** | The ID of the repository that the artifact belongs to | [optional] 
 **digest** | **str** | The digest of the artifact | [optional] 
 **size** | **int** | The size of the artifact | [optional] 
+**icon** | **str** | The digest of the icon | [optional] 
 **push_time** | **datetime** | The push time of the artifact | [optional] 
 **pull_time** | **datetime** | The latest pull time of the artifact | [optional] 
 **extra_attrs** | [**ExtraAttrs**](ExtraAttrs.md) |  | [optional] 

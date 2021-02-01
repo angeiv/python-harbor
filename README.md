@@ -23,7 +23,7 @@ pip install git+https://github.com/angeiv/python-harbor.git
 
 Then import the package:
 ```python
-import harbor
+import harbor 
 ```
 
 ### Setuptools
@@ -267,14 +267,15 @@ Class | Method | HTTP request | Description
 *ArtifactApi* | [**list_tags**](docs/ArtifactApi.md#list_tags) | **GET** /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}/tags | List tags
 *ArtifactApi* | [**remove_label**](docs/ArtifactApi.md#remove_label) | **DELETE** /projects/{project_name}/repositories/{repository_name}/artifacts/{reference}/labels/{label_id} | Remove label from artifact
 *AuditlogApi* | [**list_audit_logs**](docs/AuditlogApi.md#list_audit_logs) | **GET** /audit-logs | Get recent logs of the projects which the user is a member of
+*IconApi* | [**get_icon**](docs/IconApi.md#get_icon) | **GET** /icons/{digest} | Get artifact icon
 *PreheatApi* | [**create_instance**](docs/PreheatApi.md#create_instance) | **POST** /p2p/preheat/instances | Create p2p provider instances
 *PreheatApi* | [**create_policy**](docs/PreheatApi.md#create_policy) | **POST** /projects/{project_name}/preheat/policies | Create a preheat policy under a project
 *PreheatApi* | [**delete_instance**](docs/PreheatApi.md#delete_instance) | **DELETE** /p2p/preheat/instances/{preheat_instance_name} | Delete the specified P2P provider instance
 *PreheatApi* | [**delete_policy**](docs/PreheatApi.md#delete_policy) | **DELETE** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Delete a preheat policy
 *PreheatApi* | [**get_execution**](docs/PreheatApi.md#get_execution) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id} | Get a execution detail by id
 *PreheatApi* | [**get_instance**](docs/PreheatApi.md#get_instance) | **GET** /p2p/preheat/instances/{preheat_instance_name} | Get a P2P provider instance
-*PreheatApi* | [**get_log**](docs/PreheatApi.md#get_log) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs | Get the log text stream of the specified task for the given execution
 *PreheatApi* | [**get_policy**](docs/PreheatApi.md#get_policy) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Get a preheat policy
+*PreheatApi* | [**get_preheat_log**](docs/PreheatApi.md#get_preheat_log) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id}/tasks/{task_id}/logs | Get the log text stream of the specified task for the given execution
 *PreheatApi* | [**list_executions**](docs/PreheatApi.md#list_executions) | **GET** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions | List executions for the given policy
 *PreheatApi* | [**list_instances**](docs/PreheatApi.md#list_instances) | **GET** /p2p/preheat/instances | List P2P provider instances
 *PreheatApi* | [**list_policies**](docs/PreheatApi.md#list_policies) | **GET** /projects/{project_name}/preheat/policies | List preheat policies
@@ -286,7 +287,15 @@ Class | Method | HTTP request | Description
 *PreheatApi* | [**stop_execution**](docs/PreheatApi.md#stop_execution) | **PATCH** /projects/{project_name}/preheat/policies/{preheat_policy_name}/executions/{execution_id} | Stop a execution
 *PreheatApi* | [**update_instance**](docs/PreheatApi.md#update_instance) | **PUT** /p2p/preheat/instances/{preheat_instance_name} | Update the specified P2P provider instance
 *PreheatApi* | [**update_policy**](docs/PreheatApi.md#update_policy) | **PUT** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Update preheat policy
+*ProjectApi* | [**create_project**](docs/ProjectApi.md#create_project) | **POST** /projects | Create a new project.
+*ProjectApi* | [**delete_project**](docs/ProjectApi.md#delete_project) | **DELETE** /projects/{project_id} | Delete project by projectID
 *ProjectApi* | [**get_logs**](docs/ProjectApi.md#get_logs) | **GET** /projects/{project_name}/logs | Get recent logs of the projects
+*ProjectApi* | [**get_project**](docs/ProjectApi.md#get_project) | **GET** /projects/{project_id} | Return specific project detail information
+*ProjectApi* | [**get_project_deletable**](docs/ProjectApi.md#get_project_deletable) | **GET** /projects/{project_id}/_deletable | Get the deletable status of the project
+*ProjectApi* | [**get_project_summary**](docs/ProjectApi.md#get_project_summary) | **GET** /projects/{project_id}/summary | Get summary of the project.
+*ProjectApi* | [**head_project**](docs/ProjectApi.md#head_project) | **HEAD** /projects | Check if the project name user provided already exists.
+*ProjectApi* | [**list_projects**](docs/ProjectApi.md#list_projects) | **GET** /projects | List projects
+*ProjectApi* | [**update_project**](docs/ProjectApi.md#update_project) | **PUT** /projects/{project_id} | Update properties for a selected project.
 *RepositoryApi* | [**delete_repository**](docs/RepositoryApi.md#delete_repository) | **DELETE** /projects/{project_name}/repositories/{repository_name} | Delete repository
 *RepositoryApi* | [**get_repository**](docs/RepositoryApi.md#get_repository) | **GET** /projects/{project_name}/repositories/{repository_name} | Get repository
 *RepositoryApi* | [**list_repositories**](docs/RepositoryApi.md#list_repositories) | **GET** /projects/{project_name}/repositories | List repositories
@@ -301,10 +310,13 @@ Class | Method | HTTP request | Description
  - [Annotations](docs/Annotations.md)
  - [Artifact](docs/Artifact.md)
  - [AuditLog](docs/AuditLog.md)
+ - [CVEAllowlist](docs/CVEAllowlist.md)
+ - [CVEAllowlistItem](docs/CVEAllowlistItem.md)
  - [Error](docs/Error.md)
  - [Errors](docs/Errors.md)
  - [Execution](docs/Execution.md)
  - [ExtraAttrs](docs/ExtraAttrs.md)
+ - [Icon](docs/Icon.md)
  - [Instance](docs/Instance.md)
  - [InstanceCreatedResp](docs/InstanceCreatedResp.md)
  - [InstanceDeletedResp](docs/InstanceDeletedResp.md)
@@ -315,9 +327,18 @@ Class | Method | HTTP request | Description
  - [NativeReportSummary](docs/NativeReportSummary.md)
  - [Platform](docs/Platform.md)
  - [PreheatPolicy](docs/PreheatPolicy.md)
+ - [Project](docs/Project.md)
+ - [ProjectDeletable](docs/ProjectDeletable.md)
+ - [ProjectMetadata](docs/ProjectMetadata.md)
+ - [ProjectReq](docs/ProjectReq.md)
+ - [ProjectSummary](docs/ProjectSummary.md)
+ - [ProjectSummaryQuota](docs/ProjectSummaryQuota.md)
  - [ProviderUnderProject](docs/ProviderUnderProject.md)
  - [Reference](docs/Reference.md)
+ - [Registry](docs/Registry.md)
+ - [RegistryCredential](docs/RegistryCredential.md)
  - [Repository](docs/Repository.md)
+ - [ResourceList](docs/ResourceList.md)
  - [ScanOverview](docs/ScanOverview.md)
  - [Tag](docs/Tag.md)
  - [Task](docs/Task.md)
