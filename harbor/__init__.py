@@ -39,9 +39,6 @@ from harbor.models.execution import Execution
 from harbor.models.extra_attrs import ExtraAttrs
 from harbor.models.icon import Icon
 from harbor.models.instance import Instance
-from harbor.models.instance_created_resp import InstanceCreatedResp
-from harbor.models.instance_deleted_resp import InstanceDeletedResp
-from harbor.models.instance_update_resp import InstanceUpdateResp
 from harbor.models.label import Label
 from harbor.models.metadata import Metadata
 from harbor.models.metrics import Metrics

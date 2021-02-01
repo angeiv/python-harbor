@@ -44,7 +44,7 @@ class PreheatApi(object):
         :param async_req bool
         :param Instance body: The JSON object of instance. (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceCreatedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -67,7 +67,7 @@ class PreheatApi(object):
         :param async_req bool
         :param Instance body: The JSON object of instance. (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceCreatedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -127,7 +127,7 @@ class PreheatApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InstanceCreatedResp',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -258,7 +258,7 @@ class PreheatApi(object):
         :param async_req bool
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceDeletedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -281,7 +281,7 @@ class PreheatApi(object):
         :param async_req bool
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceDeletedResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -337,7 +337,7 @@ class PreheatApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InstanceDeletedResp',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1908,7 +1908,7 @@ class PreheatApi(object):
         :param Instance body: The instance to update (required)
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceUpdateResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1932,7 +1932,7 @@ class PreheatApi(object):
         :param Instance body: The instance to update (required)
         :param str preheat_instance_name: Instance Name (required)
         :param str x_request_id: An unique ID for the request
-        :return: InstanceUpdateResp
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1998,7 +1998,7 @@ class PreheatApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InstanceUpdateResp',  # noqa: E501
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

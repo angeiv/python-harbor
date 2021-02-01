@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**update_policy**](PreheatApi.md#update_policy) | **PUT** /projects/{project_name}/preheat/policies/{preheat_policy_name} | Update preheat policy
 
 # **create_instance**
-> InstanceCreatedResp create_instance(body, x_request_id=x_request_id)
+> create_instance(body, x_request_id=x_request_id)
 
 Create p2p provider instances
 
@@ -50,8 +50,7 @@ x_request_id = 'x_request_id_example' # str | An unique ID for the request (opti
 
 try:
     # Create p2p provider instances
-    api_response = api_instance.create_instance(body, x_request_id=x_request_id)
-    pprint(api_response)
+    api_instance.create_instance(body, x_request_id=x_request_id)
 except ApiException as e:
     print("Exception when calling PreheatApi->create_instance: %s\n" % e)
 ```
@@ -65,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstanceCreatedResp**](InstanceCreatedResp.md)
+void (empty response body)
 
 ### Authorization
 
@@ -134,7 +133,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_instance**
-> InstanceDeletedResp delete_instance(preheat_instance_name, x_request_id=x_request_id)
+> delete_instance(preheat_instance_name, x_request_id=x_request_id)
 
 Delete the specified P2P provider instance
 
@@ -159,8 +158,7 @@ x_request_id = 'x_request_id_example' # str | An unique ID for the request (opti
 
 try:
     # Delete the specified P2P provider instance
-    api_response = api_instance.delete_instance(preheat_instance_name, x_request_id=x_request_id)
-    pprint(api_response)
+    api_instance.delete_instance(preheat_instance_name, x_request_id=x_request_id)
 except ApiException as e:
     print("Exception when calling PreheatApi->delete_instance: %s\n" % e)
 ```
@@ -174,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstanceDeletedResp**](InstanceDeletedResp.md)
+void (empty response body)
 
 ### Authorization
 
@@ -990,7 +988,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_instance**
-> InstanceUpdateResp update_instance(body, preheat_instance_name, x_request_id=x_request_id)
+> update_instance(body, preheat_instance_name, x_request_id=x_request_id)
 
 Update the specified P2P provider instance
 
@@ -1016,8 +1014,7 @@ x_request_id = 'x_request_id_example' # str | An unique ID for the request (opti
 
 try:
     # Update the specified P2P provider instance
-    api_response = api_instance.update_instance(body, preheat_instance_name, x_request_id=x_request_id)
-    pprint(api_response)
+    api_instance.update_instance(body, preheat_instance_name, x_request_id=x_request_id)
 except ApiException as e:
     print("Exception when calling PreheatApi->update_instance: %s\n" % e)
 ```
@@ -1032,7 +1029,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstanceUpdateResp**](InstanceUpdateResp.md)
+void (empty response body)
 
 ### Authorization
 
